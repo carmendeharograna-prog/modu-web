@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODU | Modular Shelving System</title>
+    <meta name="description" content="MODU modular shelving system: Scandinavian minimalist design, sustainable materials, and flexible interior solutions.">
+    <meta name="keywords" content="modular shelving, Scandinavian design, sustainable furniture, minimalist interior, wood shelving">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'modu-beige': '#F8F5F0',
+                        'modu-taupe': '#E8E2D9',
+                        'modu-charcoal': '#2C2C2C',
+                        'modu-oak': '#B8A384',
+                        'modu-walnut': '#5C4B37',
+                        'modu-sage': '#A8B8A8'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif']
+                    },
+                    spacing: {
+                        '128': '32rem',
+                        '144': '36rem'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(44, 44, 44, 0.1), rgba(44, 44, 44, 0.05)), 
+                        url('https://picsum.photos/1920/1080?random=1&blur=1');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+        .material-card {
+            background: linear-gradient(135deg, #F8F5F0 0%, #E8E2D9 100%);
+        }
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 2rem;
+            width: 1px;
+            height: calc(100% - 2rem);
+            background-color: #E8E2D9;
+        }
+        .process-step:last-child::before {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-modu-charcoal bg-modu-beige">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-modu-taupe/20">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-modu-charcoal rounded-sm"></div>
+                    <span class="text-2xl font-serif font-semibold tracking-tight">MODU</span>
+                </div>
+                
+                <ul id="nav-menu" class="hidden md:flex items-center space-x-8"></ul>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="menu-toggle" class="md:hidden text-modu-charcoal">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <a href="#contact" class="hidden md:inline-block px-6 py-2 bg-modu-charcoal text-white hover:bg-modu-walnut transition-colors duration-300 rounded-sm">
+                        Get Catalog
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="md:hidden mt-4 hidden">
+                <ul id="mobile-nav" class="space-y-4"></ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20">
+            <div class="max-w-3xl animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-serif font-light text-modu-charcoal mb-6 text-shadow">
+                    Modular Shelving.<br>
+                    <span class="font-semibold">Timeless Design.</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-modu-charcoal/80 mb-10 max-w-2xl">
+                    Scandinavian-inspired modular shelving system crafted from sustainable materials. 
+                    Create your perfect interior with flexible, elegant solutions.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#features" class="px-8 py-3 bg-modu-charcoal text-white hover:bg-modu-walnut transition-colors duration-300 rounded-sm">
+                        Explore System
+                    </a>
+                    <a href="#gallery" class="px-8 py-3 border border-modu-charcoal text-modu-charcoal hover:bg-modu-charcoal hover:text-white transition-all duration-300 rounded-sm">
+                        View Gallery
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif font-light text-modu-charcoal mb-4">
+                    Designed for Flexibility
+                </h2>
+                <p class="text-lg text-modu-charcoal/70 max-w-2xl mx-auto">
+                    Create, adapt, and transform your space with our modular components
+                </p>
+            </div>
+            
+            <div id="features-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Design Process -->
+    <section class="py-24 bg-modu-beige">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif font-light text-modu-charcoal mb-4">
+                    Thoughtful Design Process
+                </h2>
+                <p class="text-lg text-modu-charcoal/70 max-w-2xl mx-auto">
+                    Every MODU piece is crafted with intention and precision
+                </p>
+            </div>
+            
+            <div id="process-steps" class="relative max-w-4xl mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif font-light text-modu-charcoal mb-4">
+                    Sustainable Materials
+                </h2>
+                <p class="text-lg text-modu-charcoal/70 max-w-2xl mx-auto">
+                    Responsibly sourced materials that stand the test of time
+                </p>
+            </div>
+            
+            <div id="materials-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-24 bg-modu-beige">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif font-light text-modu-charcoal mb-4">
+                    Interior Inspirations
+                </h2>
+                <p class="text-lg text-modu-charcoal/70 max-w-2xl mx-auto">
+                    See MODU in beautifully designed spaces
+                </p>
+            </div>
+            
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-modu-charcoal text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif font-light mb-4">
+                        Begin Your Design Journey
+                    </h2>
+                    <p class="text-lg text-white/80 max-w-2xl mx-auto">
+                        Request our catalog or speak with our design consultants
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-serif font-light mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <i class="fas fa-envelope mt-1 text-modu-oak"></i>
+                                <div>
+                                    <p class="font-medium">Email</p>
+                                    <p class="text-white/70">info@modushelving.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <i class="fas fa-phone mt-1 text-modu-oak"></i>
+                                <div>
+                                    <p class="font-medium">Phone</p>
+                                    <p class="text-white/70">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <i class="fas fa-map-marker-alt mt-1 text-modu-oak"></i>
+                                <div>
+                                    <p class="font-medium">Showroom</p>
+                                    <p class="text-white/70">123 Design District<br>Copenhagen, Denmark</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="text-xl font-serif font-light mb-4">Sustainability Commitment</h4>
+                            <p class="text-white/70">
+                                All MODU products are crafted from FSC-certified wood and produced in carbon-neutral facilities. 
+                                We plant three trees for every one used in production.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-sm focus:outline-none focus:border-modu-oak transition-colors" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-sm focus:outline-none focus:border-modu-oak transition-colors" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-2">Your Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-sm focus:outline-none focus:border-modu-oak transition-colors" placeholder="Tell us about your project..."></textarea>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <input type="checkbox" id="catalog" class="rounded-sm bg-white/10 border-white/20">
+                                <label for="catalog" class="text-sm">Send me the MODU catalog</label>
+                            </div>
+                            <button type="submit" class="w-full px-8 py-3 bg-modu-oak text-modu-charcoal hover:bg-white transition-colors duration-300 rounded-sm font-medium">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-modu-walnut text-white/70 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-6 h-6 bg-white rounded-sm"></div>
+                        <span class="text-xl font-serif font-semibold text-white">MODU</span>
+                    </div>
+                    <p class="text-sm">© 2023 MODU Shelving Systems. All rights reserved.</p>
+                </div>
+                
+                <ul id="footer-links" class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0"></ul>
+                
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-white/10 text-center text-sm">
+                <p>MODU is committed to sustainable design and responsible manufacturing practices.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data Layer
+        const navigationItems = [
+            { "label": "Home", "href": "#home", "icon": "fas fa-home" },
+            { "label": "Features", "href": "#features", "icon": "fas fa-cube" },
+            { "label": "Design Process", "href": "#process", "icon": "fas fa-pencil-ruler" },
+            { "label": "Materials", "href": "#materials", "icon": "fas fa-leaf" },
+            { "label": "Gallery", "href": "#gallery", "icon": "fas fa-images" },
+            { "label": "Contact", "href": "#contact", "icon": "fas fa-envelope" }
+        ];
+
+        const features = [
+            { 
+                "title": "Modular Components", 
+                "description": "Mix and match shelves, cabinets, and dividers to create your perfect configuration.",
+                "icon": "fas fa-th-large",
+                "image": "https://picsum.photos/600/400?random=2",
+                "alt": "Modular shelving components"
+            },
+            { 
+                "title": "Adaptable Design", 
+                "description": "Easily reconfigure as your needs change. Grow and transform with your space.",
+                "icon": "fas fa-exchange-alt",
+                "image": "https://picsum.photos/600/400?random=3",
+                "alt": "Adaptable shelving configuration"
+            },
+            { 
+                "title": "Clean Aesthetics", 
+                "description": "Minimalist Scandinavian design with hidden fixings and seamless joints.",
+                "icon": "fas fa-palette",
+                "image": "https://picsum.photos/600/400?random=4",
+                "alt": "Clean minimalist shelving design"
+            }
+        ];
+
+        const processSteps = [
+            { 
+                "step": "01", 
+                "title": "Design Consultation", 
+                "description": "Our designers work with you to understand your space, needs, and aesthetic preferences.",
+                "icon": "fas fa-comments"
+            },
+            { 
+                "step": "02", 
+                "title": "Custom Configuration", 
+                "description": "We create a 3D visualization of your MODU system tailored to your exact specifications.",
+                "icon": "fas fa-cube"
+            },
+            { 
+                "step": "03", 
+                "title": "Sustainable Production", 
+                "description": "Your pieces are crafted from FSC-certified wood in our carbon-neutral workshop.",
+                "icon": "fas fa-leaf"
+            },
+            { 
+                "step": "04", 
+                "title": "Professional Installation", 
+                "description": "Our team installs your MODU system with precision and care, ensuring perfect alignment.",
+                "icon": "fas fa-tools"
+            }
+        ];
+
+        const materials = [
+            { 
+                "name": "FSC-Certified Oak", 
+                "description": "Sustainably sourced European oak with natural grain variations.",
+                "color": "bg-modu-oak",
+                "image": "https://picsum.photos/400/300?random=5",
+                "alt": "Oak wood texture"
+            },
+            { 
+                "name": "Walnut Veneer", 
+                "description": "Thin-cut walnut veneer on sustainable birch plywood substrate.",
+                "color": "bg-modu-walnut",
+                "image": "https://picsum.photos/400/300?random=6",
+                "alt": "Walnut wood texture"
+            },
+            { 
+                "name": "Powder-Coated Steel", 
+                "description": "Durable steel brackets with matte powder coating in neutral tones.",
+                "color": "bg-modu-charcoal",
+                "image": "https://picsum.photos/400/300?random=7",
+                "alt": "Powder coated steel finish"
+            },
+            { 
+                "name": "Natural Oil Finish", 
+                "description": "Food-safe natural oil finish that enhances wood grain and protects surfaces.",
+                "color": "bg-modu-sage",
+                "image": "https://picsum.photos/400/300?random=8",
+                "alt": "Natural oil wood finish"
+            }
+        ];
+
+        const galleryItems = [
+            { 
+                "title": "Living Room Library", 
+                "description": "Floor-to-ceiling modular system in a Copenhagen apartment.",
+                "image": "https://picsum.photos/600/800?random=9",
+                "alt": "Living room with modular shelving"
+            },
+            { 
+                "title": "Home Office", 
+                "description": "Combined shelving and workspace in light oak finish.",
+                "image": "https://picsum.photos/600/600?random=10",
+                "alt": "Home office with modular shelving"
+            },
+            { 
+                "title": "Minimalist Entryway", 
+                "description": "Wall-mounted system with integrated storage in charcoal finish.",
+                "image": "https://picsum.photos/600/700?random=11",
+                "alt": "Entryway with modular shelving"
+            },
+            { 
+                "title": "Bedroom Display", 
+                "description": "Floating shelves and cabinets in mixed wood tones.",
+                "image": "https://picsum.photos/600/750?random=12",
+                "alt": "Bedroom with modular shelving"
+            },
+            { 
+                "title": "Kitchen Storage", 
+                "description": "Open shelving system for kitchen essentials and display.",
+                "image": "https://picsum.photos/600/650?random=13",
+                "alt": "Kitchen with modular shelving"
+            },
+            { 
+                "title": "Studio Workspace", 
+                "description": "Custom configuration for an artist's studio and gallery wall.",
+                "image": "https://picsum.photos/600/900?random=14",
+                "alt": "Studio with modular shelving"
+            }
+        ];
+
+        const footerLinks = [
+            { "label": "Privacy Policy", "href": "#privacy" },
+            { "label": "Terms of Service", "href": "#terms" },
+            { "label": "Sustainability Report", "href": "#sustainability" },
+            { "label": "Warranty", "href": "#warranty" },
+            { "label": "Shipping", "href": "#shipping" }
+        ];
+
+        // Reusable Render Functions
+        function renderNavItems(items) {
+            return items.map(item => 
+                `<li><a href="${item.href}" class="text-modu-charcoal hover:text-modu-walnut transition-colors duration-300 font-medium">${item.label}</a></li>`
+            ).join("");
+        }
+
+        function renderMobileNavItems(items) {
+            return items.map(item => 
+                `<li><a href="${item.href}" class="flex items-center space-x-3 py-3 text-modu-charcoal hover:text-modu-walnut transition-colors duration-300 font-medium">
+                    <i class="${item.icon} w-5"></i>
+                    <span>${item.label}</span>
+                </a></li>`
+            ).join("");
+        }
+
+        function renderFeatures(items) {
+            return items.map(item => 
+                `<div class="animate-slide-up hover-lift rounded-sm overflow-hidden bg-white border border-modu-taupe/20">
+                    <div class="relative overflow-hidden">
+                        <img src="${item.image}" alt="${item.alt}" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+                        <div class="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/90 flex items-center justify-center">
+                            <i class="${item.icon} text-modu-charcoal"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif font-light text-modu-charcoal mb-3">${item.title}</h3>
+                        <p class="text-modu-charcoal/70">${item.description}</p>
+                    </div>
+                </div>`
+            ).join("");
+        }
+
+        function renderProcessSteps(items) {
+            return items.map((item, index) => 
+                `<div class="process-step relative pl-12 pb-12 ${index === items.length - 1 ? 'pb-0' : ''}">
+                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-modu-charcoal flex items-center justify-center">
+                        <span class="text-white text-sm font-medium">${item.step}</span>
+                    </div>
+                    <div class="mb-4 flex items-center space-x-3">
+                        <i class="${item.icon} text-modu-oak text-xl"></i>
+                        <h3 class="text-2xl font-serif font-light text-modu-charcoal">${item.title}</h3>
+                    </div>
+                    <p class="text-modu-charcoal/70">${item.description}</p>
+                </div>`
+            ).join("");
+        }
+
+        function renderMaterials(items) {
+            return items.map(item => 
+                `<div class="material-card rounded-sm p-6 hover-lift">
+                    <div class="mb-4">
+                        <div class="${item.color} w-full h-48 rounded-sm mb-4 overflow-hidden">
+                            <img src="${item.image}" alt="${item.alt}" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <h3 class="text-xl font-serif font-light text-modu-charcoal mb-2">${item.name}</h3>
+                        <p class="text-modu-charcoal/70 text-sm">${item.description}</p>
+                    </div>
+                </div>`
+            ).join("");
+        }
+
+        function renderGallery(items) {
+            return items.map(item => 
+                `<div class="group relative overflow-hidden rounded-sm animate-fade-in">
+                    <img src="${item.image}" alt="${item.alt}" class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-modu-charcoal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white text-xl font-serif font-light mb-2">${item.title}</h3>
+                            <p class="text-white/80 text-sm">${item.description}</p>
+                        </div>
+                    </div>
+                </div>`
+            ).join("");
+        }
+
+        function renderFooterLinks(items) {
+            return items.map(item => 
+                `<li><a href="${item.href}" class="text-white/70 hover:text-white transition-colors duration-300 text-sm">${item.label}</a></li>`
+            ).join("");
+        }
+
+        // Initialize Page Content
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation
+            document.getElementById('nav-menu').innerHTML = renderNavItems(navigationItems);
+            document.getElementById('mobile-nav').innerHTML = renderMobileNavItems(navigationItems);
+            
+            // Features
+            document.getElementById('features-grid').innerHTML = renderFeatures(features);
+            
+            // Process Steps
+            document.getElementById('process-steps').innerHTML = renderProcessSteps(processSteps);
+            
+            // Materials
+            document.getElementById('materials-grid').innerHTML = renderMaterials(materials);
+            
+            // Gallery
+            document.getElementById('gallery-grid').innerHTML = renderGallery(galleryItems);
+            
+            // Footer Links
+            document.getElementById('footer-links').innerHTML = renderFooterLinks(footerLinks);
+            
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = menuToggle.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.className = 'fas fa-bars text-xl';
+                } else {
+                    icon.className = 'fas fa-times text-xl';
+                }
+            });
+            
+            // Smooth Scrolling for Navigation Links
+            document.addEventListener('click', function(event) {
+                const link = event.target.closest('a[href^="#"]');
+                if (!link) return;
+                
+                const href = link.getAttribute('href');
+                if (href === '#') return;
+                
+                event.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        menuToggle.querySelector('i').className = 'fas fa-bars text-xl';
+                    }
+                    
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+            
+            // Contact Form Submission
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value,
+                    catalog: document.getElementById('catalog').checked
+                };
+                
+                // In a real implementation, you would send this to a server
+                console.log('Form submitted:', formData);
+                
+                // Show success message
+                alert('Thank you for your message. Our design team will contact you shortly.');
+                contactForm.reset();
+            });
+            
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all sections
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
